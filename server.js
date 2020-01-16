@@ -1,6 +1,6 @@
 // Dependencies
 const express = require("express");
-const exphbs = require("express-handlebars");
+const hbs = require("express-handlebars");
 
 // Routes
 const routes = require("./controllers/burgers_controller.js");
@@ -18,7 +18,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", hbs({ defaultLayout: "main", extname: "hbs"}));
 app.set("view engine", "handlebars");
 
 // Start server
