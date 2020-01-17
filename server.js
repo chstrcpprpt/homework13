@@ -5,8 +5,6 @@ const hbs = require("express-handlebars");
 // Routes
 const routes = require("./controllers/burgers_controller.js");
 
-app.use(routes);
-
 const app = express();
 
 const PORT = process.env.PORT || 3000;
