@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
   res.render("index")
 });
 
+// api route
+const burger = require("./controllers/burgers_controller");
+app.use("/api", burger);
+
 // Start server
 app.listen(PORT, function() {
   console.log("Server listening on: http://localhost:" + PORT);
