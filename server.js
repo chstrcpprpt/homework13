@@ -16,8 +16,13 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.engine("handlebars", hbs({ defaultLayout: "main", extname: "hbs"}));
+app.engine("handlebars", hbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
+
+// html route
+app.get("/", (req, res) => {
+  res.render("index")
+});
 
 // Start server
 app.listen(PORT, function() {
