@@ -7,7 +7,7 @@ const burger = require("../models/burgers");
 
 // create routes
 
-// GET
+// GET route
 router.get("/", (req, res) => {
   burger.all((data) => {
     const burgerObj = {
