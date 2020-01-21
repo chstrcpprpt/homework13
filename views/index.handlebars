@@ -6,23 +6,28 @@
 
 	<h1>Eat-Da-Burger!</h1>
 
-{{!-- Lists --}}
 	<div class="list-container">
-		<ul class="not-devoured">
-			{{#each burger}}
-				{{#unless devoured}}
-					<li>{{this.burger_name}}</li>
-				{{/unless}}
-			{{/each}}
-		</ul>
+		<div class="not-devoured-container">
+			<h2>Not devoured</h2>
+			<ul class="not-devoured">
+				{{#each burger}}
+					{{#unless devoured}}
+						<li>{{this.burger_name}}</li> <button class="devour-btn" data-id="{{this.id}}">Devour</button>
+					{{/unless}}
+				{{/each}}
+			</ul>
+		</div>
 
-		<ul class="devoured">
-			{{#each burger}}
-				{{#if devoured}}
-					<li>{{this.burger_name}}</li>
-				{{/if}}
-			{{/each}}
-		</ul>
+		<div class="devoured-container">
+			<h2>Devoured</h2>
+			<ul class="devoured">
+				{{#each burger}}
+					{{#if devoured}}
+						<li>{{this.burger_name}}</li>
+					{{/if}}
+				{{/each}}
+			</ul>
+		</div>
 	</div>
 
 	<h2>Create burger</h2>
@@ -32,3 +37,29 @@
 	</form>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<script>
+
+	const delBtn = document.querySelectorAll(".devour-btn");
+
+	for (i = 0; i < delBtn.length; i++) {
+		delBtn[i].addEventListener("click", ev => {
+			const id = ev.target.dataset.id;
+			console.log(id);
+
+			$.ajax({
+				url: `/api/burger/${id}/devour`,
+				method: "PUT",
+				data: {
+					id: id
+				}
+			})
+		
+			location.reload();
+
+		});
+	};
+
+</script>

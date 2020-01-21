@@ -27,14 +27,12 @@ const orm = {
   },
 
   // updateOne()
-  updateOne: (tableName, columnName, value, cb) => {
+  updateOne: (tableName, columnName, value, id, cb) => {
     const queryString =
     `UPDATE ${tableName}
-    SET
-    {
-      ${columnName}: ${value}
-    };`;
-    connection.query(queryString, (err, date) => {
+    SET ${columnName} = ${value}
+    WHERE id = ${id};`;
+    connection.query(queryString, (err, data) => {
       if (err) throw err;
       cb(data);
     });

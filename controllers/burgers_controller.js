@@ -19,6 +19,17 @@ router.get("/", (req, res) => {
   });
 });
 
+// PUT
+router.put("/api/burger/:id/devour", (req, res) => {
+  const id = req.params.id
+  burger.update(id, () => {
+
+    // not 100% sure what goes here either
+    res.send(id);
+    res.status(200).end();
+  });
+});
+
 // POST
 router.post("/api/burger", (req, res) => {
   burger.create(req.body.burger, res => {

@@ -15,9 +15,9 @@ const burger = {
     });
   },
 
-  update: (cb) => {
-    orm.updateOne("burgers", "devoured", "true", data => {
-      cd(data);
+  update: (id, cb) => {
+    orm.updateOne("burgers", "devoured", "true", id, data => {
+      cb(data);
     });
   }
 
