@@ -6,7 +6,7 @@ const newBurger = document.querySelector("#newBurger");
 
 // define the data to be posted (sent)
 // Must be an object, replace newObject with your data
-const data = newObject;
+const data = {};
 
 // define options for request
 const options = {
@@ -26,6 +26,8 @@ fetch("/api/burger", options)
 // access with req.body
 // In order to read this the server needs to be able to understand json
 // to do this use app.use(express.json());
+
+
 
 
 

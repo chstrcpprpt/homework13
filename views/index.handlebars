@@ -7,8 +7,21 @@
 	<h1>Eat-Da-Burger!</h1>
 
 	<div class="list-container">
-		<ul class="not-devoured"></ul>
-		<ul class="devoured"></ul>
+		<ul class="not-devoured">
+			{{#each burger}}
+				{{#unless devoured}}
+					<li>{{this.burger_name}}</li>
+				{{/unless}}
+			{{/each}}
+		</ul>
+
+		<ul class="devoured">
+			{{#each burger}}
+				{{#if devoured}}
+					<li>{{this.burger_name}}</li>
+				{{/if}}
+			{{/each}}
+		</ul>
 	</div>
 
 	<h2>Create burger</h2>
