@@ -7,7 +7,7 @@ const burger = require("../models/burgers");
 
 // create routes
 
-// GET route
+// GET (display burgers)
 router.get("/", (req, res) => {
   burger.all((data) => {
     const burgerObj = {
@@ -19,21 +19,23 @@ router.get("/", (req, res) => {
   });
 });
 
-// PUT
+// PUT (devour burger)
 router.put("/api/burger/:id/devour", (req, res) => {
   const id = req.params.id
   burger.update(id, () => {
 
-    // not 100% sure what goes here either
     res.send(id);
     res.status(200).end();
   });
 });
 
-// POST
-router.post("/api/burger", (req, res) => {
-  burger.create(req.body.burger, res => {
-    res.status(204).end();
+// POST (create new burger)
+router.post("/api/burger/new", (req, res) => {
+  const newBurger = req.body.burger;
+  console.log(newBurger);
+
+  burger.create(newBurger, res => {
+    res.status(200).send(newBurger);
   });
 });
 
